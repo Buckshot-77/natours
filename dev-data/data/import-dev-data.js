@@ -54,4 +54,6 @@ if (process.argv[2] === '--import') {
 } else if (process.argv[2] === '--delete') {
   deleteEverything();
 } else {
+  console.log('Invalid arguments!');
+  process.exit();
 }
