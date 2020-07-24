@@ -1,6 +1,7 @@
 const fs = require('fs');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+
 const Tour = require('../../models/tourModel');
 
 dotenv.config({ path: './config.env' });
@@ -47,13 +48,15 @@ const clearDatabase = async () => {
   }
 };
 
-if (process.argv[2] === '--import') {
-  importData();
-} else if (process.argv[2] === '--delete') {
-  clearDatabase();
-}
+const possibilities = ['--import', '--delete'];
 
-if (!process.argv.includes(['--import', '--delete'])) {
+if (possibilities.includes(process.argv[2])) {
+  if (process.argv[2] === '--import') {
+    importData();
+  } else if (process.argv[2] === '--delete') {
+    clearDatabase();
+  }
+} else {
   console.log('Invalid arguments!');
   process.exit();
 }
