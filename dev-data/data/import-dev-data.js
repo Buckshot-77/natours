@@ -36,7 +36,7 @@ const importData = async () => {
   }
 };
 
-const deleteEverything = async () => {
+const clearDatabase = async () => {
   try {
     await Tour.deleteMany();
     console.log('Data deleted successfully!');
@@ -50,7 +50,7 @@ const deleteEverything = async () => {
 if (process.argv[2] === '--import') {
   importData();
 } else if (process.argv[2] === '--delete') {
-  deleteEverything();
+  clearDatabase();
 }
 
 if (!process.argv.includes(['--import', '--delete'])) {
